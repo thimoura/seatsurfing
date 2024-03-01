@@ -338,7 +338,7 @@ func (r *OrganizationRepository) createSampleData(org *Organization) error {
 	}
 	spaces := []*Space{
 		{LocationID: location.ID, Name: "Conference 1", X: 990, Y: 76, Width: 204, Height: 70, Rotation: 0},
-		{LocationID: location.ID, Name: "Desk 1", X: 755, Y: 60, Width: 120, Height: 55, Rotation: 0},
+		{LocationID: location.ID, Name: "Mesa 1", X: 755, Y: 60, Width: 120, Height: 55, Rotation: 0},
 		{LocationID: location.ID, Name: "Desk 2", X: 843, Y: 337, Width: 108, Height: 53, Rotation: 0},
 		{LocationID: location.ID, Name: "Desk 3", X: 624, Y: 518, Width: 104, Height: 52, Rotation: 0},
 		{LocationID: location.ID, Name: "Desk 4", X: 625, Y: 571, Width: 104, Height: 52, Rotation: 0},

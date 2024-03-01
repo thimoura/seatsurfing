@@ -1,7 +1,7 @@
 import { TFunction } from "i18next";
 
 export default class Formatting {
-    static Language: string = "en";
+    static Language: string = "pt-BR";
     static t: TFunction;
     
     static tbool(s: string) {
@@ -17,7 +17,7 @@ export default class Formatting {
             day: '2-digit',
             hour: 'numeric',
             minute: 'numeric',
-            hour12: this.tbool("hour12")
+            hour12: false //this.tbool("hour12")
           });
         return formatter;
     }

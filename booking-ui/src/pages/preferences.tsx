@@ -1,7 +1,7 @@
 import React from 'react';
 import { Ajax, Location, User, UserPreference } from 'flexspace-commons';
 import Loading from '../components/Loading';
-import { Alert, Button, Col, Form, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Form, Row, Stack } from 'react-bootstrap';
 import { WithTranslation, withTranslation } from 'next-i18next';
 import { NextRouter } from 'next/router';
 import NavBar from '@/components/NavBar';
@@ -216,25 +216,22 @@ class Preferences extends React.Component<Props, State> {
             </Form.Group>
             <Form.Group className="margin-top-15">
               <Form.Label>{this.props.t("bookingcolors")}</Form.Label>
-              <Row>
-                <Col>
-                  <p>Already booked</p>
-                  <Form.Control type="color" key={"booked"} id={"booked"} value={this.state.booked} onChange={(e: any) => this.setState({booked: e.target.value})} />
-                </Col>
-                <Col>
-                  <p>Not booked</p>
-                  <Form.Control type="color" key={"notBooked"} id={"notBooked"} value={this.state.notBooked} onChange={(e: any) => this.setState({ notBooked: e.target.value })} />
-                </Col>
-                <Col>
-                  <p>Self booked</p>
-                  <Form.Control type="color" key={"selfBooked"} id={"selfBooked"} value={this.state.selfBooked} onChange={(e: any) => this.setState({ selfBooked: e.target.value })} />
-                </Col>
-                <Col>
-                  <p>Buddy booked</p>
-                  <Form.Control type="color" key={"buddyBooked"} id={"buddyBooked"} value={this.state.buddyBooked} onChange={(e: any) => this.setState({ buddyBooked: e.target.value })} />
-                </Col>
-              </Row>
-            
+              <Stack direction="horizontal" gap={3}>
+                <Form.Control type="color" key={"booked"} id={"booked"} value={this.state.booked} onChange={(e: any) => this.setState({booked: e.target.value})} />
+                <p className='margin-top-15'>Reservadas</p>
+              </Stack>
+              <Stack direction="horizontal" gap={3}>
+                <Form.Control type="color" key={"notBooked"} id={"notBooked"} value={this.state.notBooked} onChange={(e: any) => this.setState({ notBooked: e.target.value })} />
+                <p className='margin-top-15'>Livres</p>
+              </Stack>
+              <Stack direction="horizontal" gap={3}>
+                <Form.Control type="color" key={"selfBooked"} id={"selfBooked"} value={this.state.selfBooked} onChange={(e: any) => this.setState({ selfBooked: e.target.value })} />
+                <p className='margin-top-15'>Suas reservas</p>
+              </Stack>
+              <Stack direction="horizontal" gap={3}>  
+                <Form.Control type="color" key={"buddyBooked"} id={"buddyBooked"} value={this.state.buddyBooked} onChange={(e: any) => this.setState({ buddyBooked: e.target.value })} />
+                <p className='margin-top-15'>Amigo</p>
+              </Stack>
             </Form.Group>
             <Form.Group className="margin-top-15">
               <Form.Label>{this.props.t("preferredLocation")}</Form.Label>

@@ -704,7 +704,7 @@ class Search extends React.Component<Props, State> {
       </div>
     );
 
-    let formatter = Formatting.getFormatter();
+    let formatter = Formatting.getFormatter(true);
     if (RuntimeConfig.INFOS.dailyBasisBooking) {
       formatter = Formatting.getFormatterNoTime();
     }

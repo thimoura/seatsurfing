@@ -4,28 +4,41 @@ services:
   server:
     image: server
     container_name: server
+    build: .
     restart: always
     networks:
       sql:
       http:
     ports:
       - 8080:8080
+      - 443:443
     depends_on:
       - db
     environment:
-      POSTGRES_URL: 'postgres://seatsurfing:DB_PASSWORD@db/seatsurfing?sslmode=disable'
+      POSTGRES_URL: 'postgres://seatsurfing:sdc2024@db/seatsurfing?sslmode=disable'
       JWT_SIGNING_KEY: 'some_random_string'
       BOOKING_UI_BACKEND: 'booking-ui:3001'
       ADMIN_UI_BACKEND: 'admin-ui:3000'
+      INIT_ORG_NAME: 'Shopping do Cidadão'
+      INIT_ORG_DOMAIN: 'shoppingdocidadao.com.br'
+      INIT_ORG_USER: 'fazan'
+      SMTP_HOST: 'smtp.gmail.com'
+      SMTP_PORT: 587
+      SMTP_START_TLS: 1
+      SMTP_AUTH: 1
+      SMTP_AUTH_USER: maildofaz@gmail.com
+      SMTP_AUTH_PASS: fazan0020
   booking-ui:
     image: booking-ui-pt
     container_name: booking-ui
+    build: ./booking-ui/.
     restart: always
     networks:
       http:
   admin-ui:
     image: admin-ui
     container_name: admin-ui
+    build: ./admin-ui/.
     restart: always
     networks:
       http:
@@ -40,7 +53,7 @@ services:
     volumes:
       - db:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: DB_PASSWORD
+      POSTGRES_PASSWORD: sdc2024
       POSTGRES_USER: seatsurfing
       POSTGRES_DB: seatsurfing
 

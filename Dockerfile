@@ -12,6 +12,6 @@ FROM gcr.io/distroless/static-debian12
 COPY --from=server-builder /go/src/app/server/main /app/
 COPY server/res/ /app/res
 WORKDIR /app
-EXPOSE 8080
+EXPOSE 8080 443
 USER 65532:65532
 CMD ["./main"]
